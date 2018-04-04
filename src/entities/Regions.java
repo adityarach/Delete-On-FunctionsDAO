@@ -98,7 +98,7 @@ public class Regions implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Regions[ regionId=" + regionId + " ]";
+        return "" + regionId + "";
     }
     
 }

@@ -7,7 +7,11 @@ package dao;
 
 import entities.Countries;
 import entities.Jobs;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -18,7 +22,8 @@ import tools.HibernateUtil;
  * @author Ignatius
  */
 public class CountriesDAO {
-
+    
+    public CountriesDAO cDAO;
     public Session session;
     private SessionFactory factory;
     public Transaction transaction;
@@ -27,6 +32,7 @@ public class CountriesDAO {
 
     public CountriesDAO() {
         this.fdao = new FunctionsDAO(HibernateUtil.getSessionFactory());
+        
     }
 
     public boolean insert(Object object) {
@@ -51,8 +57,8 @@ public class CountriesDAO {
      * @return list data di dalam tabel Countries berdasarkan parameter yang
      * dicari
      */
-    public List<Object> search(String category, String search) {
-        return fdao.getAll("FROM Countries WHERE " + category + " LIKE '%" + search + "%'");
+    public List<Object> search(String category, String cari) {
+        return fdao.getAll("FROM Countries WHERE " + category + " LIKE '%" + cari + "%'");
     }
 
     public Object getById(String Id) {
@@ -70,6 +76,10 @@ public class CountriesDAO {
     }
 
     public List<Object> getAll() {
-        return fdao.getAll("FROM Countries");
+        return fdao.getAll("FROM Countries");    
     }
+    
+    
+    
+    
 }
